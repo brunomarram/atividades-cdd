@@ -9,3 +9,4 @@ imblearn
 nltk
 matplotlib
 seaborn
+auto-sklearn
