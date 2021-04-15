@@ -16146,6 +16146,7 @@ Name: Survived, dtype: int64</pre>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot; Perceptron &quot;</span><span class="p">)</span>
     <span class="n">ini</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="c1">#Inicio do calculo do tempo</span>
 
+    <span class="c1">#foram testadas diversos parâmetros e combinações, e o melhor resultado obtido foi utilizando esses parâmetros para o Perceptron</span>
     <span class="n">perceptron</span> <span class="o">=</span> <span class="n">Perceptron</span><span class="p">(</span><span class="n">tol</span><span class="o">=</span><span class="mf">1e-8</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">eta0</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">n_iter_no_change</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">l1_ratio</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">warm_start</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">max_iter</span><span class="o">=</span><span class="mi">10000</span><span class="p">)</span>
     <span class="n">perceptron</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">Y_train</span><span class="p">)</span>
 
@@ -16159,6 +16160,7 @@ Name: Survived, dtype: int64</pre>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot; MLP &quot;</span><span class="p">)</span>
     <span class="n">ini</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="c1">#Inicio do calculo do tempo</span>
 
+    <span class="c1">#foram testadas diversos parâmetros e combinações, e o melhor resultado obtido foi utilizando esses parâmetros para o MLP</span>
     <span class="n">mlp</span> <span class="o">=</span> <span class="n">MLPClassifier</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">1e-5</span><span class="p">,</span> <span class="n">hidden_layer_sizes</span><span class="o">=</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="mi">21</span><span class="p">),</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
     <span class="n">mlp</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">Y_train</span><span class="p">)</span>
 
@@ -16175,9 +16177,8 @@ Name: Survived, dtype: int64</pre>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot; AutoML &quot;</span><span class="p">)</span>
     <span class="n">ini</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="c1">#Inicio do calculo do tempo</span>
 
-    <span class="c1"># define search</span>
+    <span class="c1"># tempo para realização de 2 mins + tempo por run limitado a 30 segundos. 8 núcleos</span>
     <span class="n">automl</span> <span class="o">=</span> <span class="n">AutoSklearnClassifier</span><span class="p">(</span><span class="n">time_left_for_this_task</span><span class="o">=</span><span class="mi">2</span><span class="o">*</span><span class="mi">60</span><span class="p">,</span> <span class="n">per_run_time_limit</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
-    <span class="c1"># perform the search</span>
     <span class="n">automl</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">Y_train</span><span class="p">)</span>
 
     <span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
@@ -16899,7 +16900,7 @@ accuracy
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>Como podemos perceber, por meio de validação cruzada, o autoML se mostrou mais efetivo. Porém, bem mais demorado em termos de tempo de execução, por testar diversos modelos</p>
+<p>Como podemos perceber, por meio de validação cruzada, o autoML se mostrou mais efetivo. Porém, bem mais demorado em termos de tempo de execução, por testar diversos modelos diferentes. Comprovando o que vimos em sala de que em alguns cenários os autoML se mostra mais efetivo que a seleção de um algoritmo específico para o problema.</p>
 
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
